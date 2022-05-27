@@ -1,0 +1,17 @@
+{
+  "name": "may-26",
+  "version": "1.0.0",
+  "description": "may 26 assignment",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm app26.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dawed muzeyen",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongodb": "^4.6.0"
+  }
+}
