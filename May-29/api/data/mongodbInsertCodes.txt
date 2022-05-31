@@ -1,0 +1,1 @@
+ db.students.insertMany([{StudName: "John", StudId: "23", GPA: 3.1, courses: [{CourseTitle: "MWA", CourseCode: "cs23"}]}, {StudName: "James", StudId: "45", GPA: 2.8, courses: [{CourseTitle: "EA", CourseCode: "cs15"}]}, {StudName: "Jasmin", StudId: "28", GPA: 3.5, courses: [{CourseTitle: "WAA", CourseCode: "cs11"}]}])
