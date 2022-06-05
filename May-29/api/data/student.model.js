@@ -16,16 +16,16 @@ const courseSchema = mongoose.Schema({
 const studentSchema = mongoose.Schema({
   StudName: {
     type: String,
-    // required: true,
+    required: true,
   },
   StudId: {
     type: String,
-    // required: true,
+    required: true,
     max: 10,
     min: 10,
   },
   GPA: Number,
-  Courses: [courseSchema],
+  Courses: [String],
 });
-mongoose.model('Student', studentSchema, 'students');
 mongoose.model('Course', courseSchema, 'courses');
+mongoose.model('Student', studentSchema, 'students');

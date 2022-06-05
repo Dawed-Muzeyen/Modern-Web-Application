@@ -1,3 +1,4 @@
+/*Eslint es6 */
 const dbConnection = require("../data/dbconnection");
 const db = dbConnection.get();
 

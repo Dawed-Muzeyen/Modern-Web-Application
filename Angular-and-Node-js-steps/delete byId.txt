@@ -1,0 +1,20 @@
+1. add the ff in heroes.comp.html between <li> and <a>
+<button type="button" class="delete" title="delete hero"
+  (click)="delete(hero)">x</button>
+
+2. add the ff in the heroes.comp.ts:
+delete(hero: Hero): void {
+  this.heroes = this.heroes.filter(h => h !== hero);
+  this.heroService.deleteHero(hero.id).subscribe();
+}
+
+3. add the ff in hero.service.ts:
+/** DELETE: delete the hero from the server */
+deleteHero(id: number): Observable<Hero> {
+  const url = `${this.heroesUrl}/${id}`;
+
+  return this.http.delete<Hero>(url, this.httpOptions).pipe(
+    tap(_ => this.log(`deleted hero id=${id}`)),
+    catchError(this.handleError<Hero>('deleteHero'))
+  );
+}

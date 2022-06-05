@@ -1,27 +1,26 @@
-// Module calling
-const MongoClient = require("mongodb").MongoClient;
-
-// Server path
-const url = "mongodb://localhost:27017/";
-
-// Name of the database
-
+const MongoClient = require('mongodb').MongoClient;
+require('dotenv').config();
+var url = 'mongodb://localhost:27017/mydb';
 let _connection = null;
+
 const open = function () {
-  if (get() == null)
-    MongoClient.connect(url, (err, client) => {
-      if (!err) {
-        console.log("successful connection with the server");
-        _connection = client.db(process.env.DB_NAME);
-        console.log(_connection);
-      } else console.log("Error in the connectivity");
+  if (get() == null) {
+    console.log(process.env.DB_URL);
+    MongoClient.connect(process.env.DB_URL, function (err, client) {
+      if (err) {
+        console.log('DB connection failed', err);
+        return;
+      }
+      _connection = client.db(process.env.DB_NAME);
+      console.log('DB connection open', _connection);
     });
+  }
 };
+
 const get = function () {
   return _connection;
 };
 
-open();
 module.exports = {
   open: open,
   get: get,

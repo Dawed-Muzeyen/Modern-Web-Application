@@ -1,1 +1,1 @@
-require("./api/data/dbconnection.js).open()");
+require('./api/data/dbconnection.js').open();

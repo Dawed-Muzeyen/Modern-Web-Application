@@ -8,7 +8,7 @@ const getStudentCoursesByStudId = function (req, res) {
   Student.findById(studId)
     .select('courses')
     .exec(function (err, student) {
-      console.log('Found courses ', student.courses, ' for Game ', student);
+      console.log('Found courses ', student.courses, ' for Student ', student);
       res.status(200).json(student.courses);
     });
 };

@@ -1,4 +1,4 @@
-1. add the ff in the hero.service.ts(getById methos):
+1. replace the getHero method with the ff in the hero.service.ts(getById methos):
 /** GET hero by id. Will 404 if id not found */
 getHero(id: number): Observable<Hero> {
   const url = `${this.heroesUrl}/${id}`;
@@ -8,11 +8,12 @@ getHero(id: number): Observable<Hero> {
   );
 }
 
+2. remove import { HEROES } from './mock-heroes'; from the hero.service.ts
 
-2. add the ff in the hero.detail.html for update:
+3. add the ff in the hero.detail.html for update:
 <button type="button" (click)="save()">save</button>
 
-3. add the ff in the hero.detail.ts for update:
+4. add the ff in the hero.detail.ts for update:
 save(): void {
   if (this.hero) {
     this.heroService.updateHero(this.hero)
@@ -20,7 +21,7 @@ save(): void {
   }
 }
 
-4. add the ff to the hero.service.ts(for update):
+5. add the ff to the hero.service.ts(for update):
 /** PUT: update the hero on the server */
 updateHero(hero: Hero): Observable<any> {
   return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
@@ -29,7 +30,7 @@ updateHero(hero: Hero): Observable<any> {
   );
 }
 
-5. the httpOptions in the hero.service.ts:
+6. the httpOptions in the hero.service.ts:
 httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
