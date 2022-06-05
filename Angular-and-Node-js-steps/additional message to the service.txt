@@ -1,0 +1,11 @@
+1. import message service in the heroes component.ts:
+import { MessageService } from '../message.service';
+
+2. inject messageService:
+private messageService: MessageService
+
+3. replce onSelect method of heroes component.ts with ff:
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
+  }

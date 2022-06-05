@@ -1,0 +1,46 @@
+1. create a component:
+ng generate component messages
+
+2. add it to the app.component.html:
+<app-messages></app-messages>
+
+3. generate a message service:
+ng generate service message
+
+4. add the ff to the message service.ts
+messages: string[] = [];
+
+  add(message: string) {
+    this.messages.push(message);
+  }
+
+  clear() {
+    this.messages = [];
+  }
+
+5. inject it to the heroes service:
+import { MessageService } from './message.service';
+private messageService: MessageService(constructor injection)
+
+6. modify the getHeroes method in the heroes service.ts like below:
+getHeroes(): Observable<Hero[]> {
+  const heroes = of(HEROES);
+  this.messageService.add('HeroService: fetched heroes');
+  return heroes;
+}
+
+7. write the ff in message component.ts:
+import { MessageService } from '../message.service';
+
+8. inject it (Constructor)
+public messageService: MessageService
+
+9. write the ff in message html template:
+<div *ngIf="messageService.messages.length">
+
+  <h2>Messages</h2>
+  <button type="button" class="clear"
+          (click)="messageService.clear()">Clear messages</button>
+  <div *ngFor='let message of messageService.messages'> {{message}} </div>
+
+</div>

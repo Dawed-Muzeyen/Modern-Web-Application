@@ -1,0 +1,29 @@
+1. generate a service using the ff command:
+ng generate service hero 
+
+2. get hero data by writing the ff in Hero service.ts:
+import { HEROES } from './mock-heroes';
+
+3. write the ff method in heroservice.ts:
+getHeroes(): Hero[] {
+  return HEROES;
+}
+
+4. update the heroes component with the ff code:
+import { HeroService } from '../hero.service';
+
+5. declare heros like this and remove the other heroes variable with this code:
+heroes: Hero[] = [];
+
+6. Inject the hero service in heroes component (constructor injection):
+private heroService: HeroService
+
+7. add the ff in the heroes component.ts method:
+getHeroes(): void {
+  this.heroes = this.heroService.getHeroes();
+}
+
+8. call it in ngOnInit() method:
+ngOnInit(): void {
+  this.getHeroes();
+}

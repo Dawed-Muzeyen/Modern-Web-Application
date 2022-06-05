@@ -1,0 +1,11 @@
+1. import { FormsModule } from '@angular/forms'; // in app.moduel.ts
+2. add FormsModule in the list of modules in  app.moduel.ts
+3. add the following inside the html template where you want to show the form:
+<div>
+  <label for="name">Hero name: </label>
+  <input id="name" [(ngModel)]="hero.name" placeholder="name">
+</div>
+
+4. [(ngModel)] is the two way binding
+
+

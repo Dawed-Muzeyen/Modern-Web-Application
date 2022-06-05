@@ -1,0 +1,19 @@
+1. create a details component add the ff code on ts file:
+<div *ngIf="hero">
+
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
+  </div>
+
+</div>
+
+2. create the variable hero with type Hero and annotate it with input:
+import { Hero } from '../hero';
+import { Component, OnInit, Input } from '@angular/core';
+@Input() hero?: Hero;
+
+3. remove the detail div part which shows details and replace with this:
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>

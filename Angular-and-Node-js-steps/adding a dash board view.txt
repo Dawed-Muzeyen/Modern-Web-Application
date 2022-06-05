@@ -1,0 +1,38 @@
+1. generate component:
+ng generate component dashboard
+
+2. replace the content of the generated html template with the ff code:
+<h2>Top Heroes</h2>
+<div class="heroes-menu">
+  <a *ngFor="let hero of heroes">
+    {{hero.name}}
+  </a>
+</div>
+
+3. Import and inject hero service into the dashboard:
+import { HeroService } from '../hero.service';
+private heroService: HeroService 
+
+4. add to dashboard component the ff:
+heroes: Hero[] = [];
+
+5. import hero:
+import { Hero } from '../hero';
+
+6
+getHeroes(): void {
+  this.heroService.getHeroes()
+    .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+}
+
+7. import the dashboard component in the module routing:
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+9. add the ff to the routing list in the routing module
+{ path: 'dashboard', component: DashboardComponent },
+
+6. make the dashboard the default component:
+{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+
+7. add the dashboard in the nav bar:
+ <a routerLink="/dashboard">Dashboard</a>

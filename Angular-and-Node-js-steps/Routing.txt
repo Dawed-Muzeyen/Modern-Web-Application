@@ -1,0 +1,37 @@
+1. generate a routing module with the following command:
+ng generate module app-routing --flat --module=app
+
+2. remove the ff code from the generated module:
+import { CommonModule } from '@angular/common';
+
+3. add the ff code to the generated routing module:
+import { RouterModule, Routes } from '@angular/router';
+import { HeroesComponent } from './heroes/heroes.component';
+
+4. add the ff code after the import in the generated module:
+const routes: Routes = [
+  { path: 'heroes', component: HeroesComponent }
+];
+
+5. remove the ff code from the generated module:
+@NgModule({
+  imports: [
+    CommonModule
+  ],
+  declarations: []
+})
+
+6. add the ff code on the place of the removed code above:
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+
+7. add a router outlet in the app component.html:
+<router-outlet></router-outlet> 
+
+8. add a nav before the above code:
+<nav>
+  <a routerLink="/heroes">Heroes</a>
+</nav>
+

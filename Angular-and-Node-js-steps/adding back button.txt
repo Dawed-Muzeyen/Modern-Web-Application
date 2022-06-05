@@ -1,0 +1,7 @@
+1. add the ff to comp.detail.html:
+<button type="button" (click)="goBack()">go back</button>
+
+2. Add the ff in com.detail.ts:
+goBack(): void {
+  this.location.back();
+}

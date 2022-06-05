@@ -1,0 +1,68 @@
+1. add the ff to app.module.ts
+import { HttpClientModule } from '@angular/common/http';
+
+2. add the ff to app.module.ts:
+HttpClientModule,(in the module import part)
+
+3. install in-memory api:
+npm install angular-in-memory-web-api --save
+
+4. add the ff in app.module.ts:
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
+6. add the ff in app.module.ts in the import part:
+HttpClientInMemoryWebApiModule.forRoot(
+  InMemoryDataService, { dataEncapsulation: false }
+)
+
+7. generate in memory data service:
+ng generate service InMemoryData
+
+8. add the ff in the service:
+import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { Hero } from './hero';
+
+9. add the ff in the service using implements:
+implements InMemoryDbService 
+
+10. add the ff inside the class of the service:
+ createDb() {
+    const heroes = [
+      { id: 12, name: 'Dr. Nice' },
+      { id: 13, name: 'Bombasto' },
+      { id: 14, name: 'Celeritas' },
+      { id: 15, name: 'Magneta' },
+      { id: 16, name: 'RubberMan' },
+      { id: 17, name: 'Dynama' },
+      { id: 18, name: 'Dr. IQ' },
+      { id: 19, name: 'Magma' },
+      { id: 20, name: 'Tornado' }
+    ];
+    return {heroes};
+  }
+
+11. add the ff in the service:
+ genId(heroes: Hero[]): number {
+    return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
+  }
+
+12. add the ff in the hero.service.ts:
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+13. Inject also this in the constructor of hero.service:
+private http: HttpClient,
+  private messageService: MessageService
+
+14. add the ff log method in the hero.service.ts
+private log(message: string) {
+  this.messageService.add(`HeroService: ${message}`);
+}
+
+15. add the ff in the hero.service.ts:
+private heroesUrl = 'api/heroes';  // URL to web api
+
+16. replace getHeroes method with the ff code:
+getHeroes(): Observable<Hero[]> {
+  return this.http.get<Hero[]>(this.heroesUrl)
+}

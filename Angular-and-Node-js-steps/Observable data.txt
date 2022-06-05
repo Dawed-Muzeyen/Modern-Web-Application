@@ -1,0 +1,14 @@
+1. import the ff in service.ts
+import { Observable, of } from 'rxjs';
+
+2.change the getHeroes Method using the ff code:
+getHeroes(): Observable<Hero[]> {
+  const heroes = of(HEROES);
+  return heroes;
+}
+
+3. replace the getHeroes method in the components with ff code:
+getHeroes(): void {
+  this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
+}

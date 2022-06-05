@@ -1,0 +1,46 @@
+1. create a mock data like below:
+import { Hero } from './hero';
+
+export const HEROES: Hero[] = [
+  { id: 12, name: 'Dr. Nice' },
+  { id: 13, name: 'Bombasto' },
+  { id: 14, name: 'Celeritas' },
+  { id: 15, name: 'Magneta' },
+  { id: 16, name: 'RubberMan' },
+  { id: 17, name: 'Dynama' },
+  { id: 18, name: 'Dr. IQ' },
+  { id: 19, name: 'Magma' },
+  { id: 20, name: 'Tornado' }
+];
+
+2. import the above file on the component where the list is injected
+import { HEROES } from '../mock-heroes';
+
+3. write inside the class:
+ heroes = HEROES;
+4. write the ff in the html template:
+<h2>My Heroes</h2>
+<ul class="heroes">
+<li *ngFor="let hero of heroes">
+  <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span>
+    <span class="name">{{hero.name}}</span>
+  </button>
+</li>
+</ul>
+
+5. add the ff to component.ts file :
+selectedHero?: Hero;
+onSelect(hero: Hero): void {
+  this.selectedHero = hero;
+}
+
+7. add the following on html template:
+<div *ngIf="selectedHero">
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div>id: {{selectedHero.id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
+  </div>
+</div>

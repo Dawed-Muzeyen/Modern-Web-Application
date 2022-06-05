@@ -1,0 +1,14 @@
+How to start angular app:
+1. ng new my-app --skip-git=true --skip-tests=true --defaults=true
+
+2. cd my-app
+
+3. ng serve --open
+
+4. create componet shoppings
+
+5. create variable with json value and model  in shopping component.ts
+
+6. display it on shopping .html with all the values of the variable.
+
+
